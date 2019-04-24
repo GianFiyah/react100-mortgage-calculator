@@ -60,5 +60,9 @@
     "type": "git",
     "url": "git://"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
 }
