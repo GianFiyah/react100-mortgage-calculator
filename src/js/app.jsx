@@ -59,54 +59,78 @@ export default class App extends React.Component {
       <div className='container'>
 
         <h3>Mortgage Calculator</h3>
+        
+        <form className="form-horizontal">
+          <div className="form-group">
+            <label 
+            className="col-sm-2 control-label"
+            > 
+              Enter Your Loan Amount: 
+            </label>
+            <input 
+              className="form-control"
+              name='balance'
+              type='number'
+              value={this.state.balance}
+              onChange={(event) => this.handleBalance(event)}
+            />
+          </div>
 
-        <div>
-          <label> Enter Your Loan Amount: </label>
-          <input
-            name='balance'
-            type='number'
-            value={this.state.balance}
-            onChange={(event) => this.handleBalance(event)}
-          />
-        </div>
-
-        <div>
-          <label> Enter Your Annual Percentage Rate: </label>
-          <input
-            name='rate'
-            type='number'
-            step='0.01'
-            value={this.state.rate}
-            onChange={(event) => this.handleRate(event)}
-          />
-        </div>
-
-        <div>
-          <label> Select Your Loan Term: </label>
-          <select
-            name='term'
-            type='number'
-            value={this.state.term}
-            onChange={(event) => this.handleTerm(event)}
+          <div
+          className="form-group"
           >
-              <option value='15'>
-              15
-              </option >
-              <option value='30'>
-                30
-              </option>
-          </select>
-        </div>
+            <label
+            className="col-sm-2 control-label"
+            > 
+              Enter Your Annual Percentage Rate: 
+            </label>
+            <input
+              className="form-control"
+              name='rate'
+              type='number'
+              step='0.01'
+              value={this.state.rate}
+              onChange={(event) => this.handleRate(event)}
+            />
+          </div>
 
-        <div>
-          <button
-            name='submit'
-            onClick={(event) => this.handleClick(event)}
-          > Calculate! </button>
-        </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-sm-2 control-label"
+            >
+              Select Your Loan Term: 
+            </label>
+            <select
+              className="form-control"
+              name='term'
+              type='number'
+              value={this.state.term}
+              onChange={(event) => this.handleTerm(event)}
+            >
+                <option value='15'>
+                  15
+                </option >
+                <option value='30'>
+                  30
+                </option>
+            </select>
+          </div>
+
+          <div
+            className="form-group"
+          >
+            <button
+              name='submit'
+              onClick={(event) => this.handleClick(event)}
+              type="button" 
+              className="btn btn-success"
+            > Calculate! </button>
+          </div>
+        </form>
 
         <div
-
           id='output'
           type='string'
         >
