@@ -26,70 +26,68 @@ export default class App extends React.Component {
         this.setState({ term: event.target.value });
     }
   
-    calculate(balance, rate, term) {
-      var p = balance;
-      var r = (rate / 100) / 12;
-      var n = term * 12;
-      var calcNumertor = (r * (Math.pow((1 + r), n)));
-      var calcDeonom = ((Math.pow((1 + r), n)) - 1);
-      var monthly = (p * (calcNumertor / calcDeonom)).toFixed(2);
-      return Number(monthly);
-    }
-  
-    handleClick(event) {
+  calculate(balance, rate, term) {
+    var p = balance;
+    var r = (rate / 100) / 12;
+    var n = term * 12;
+    var calcNumertor = (r * (Math.pow((1 + r), n)));
+    var calcDeonom = ((Math.pow((1 + r), n)) - 1);
+    var monthly = (p * (calcNumertor / calcDeonom)).toFixed(2);
+    return Number(monthly);
+  }
+
+  handleClick(event) {
     var balance = this.state.balance;
-      var rate = this.state.rate;
-      var term = this.state.term;
-      var payment = this.calculate(balance, rate, term);
-      console.log(typeof payment);
+    var rate = this.state.rate;
+    var term = this.state.term;
+    var payment = this.calculate(balance, rate, term);
+    console.log(typeof payment);
     this.setState({
-        output: (payment.toFixed(2))
-      });
-      console.log(typeof this.state.output);
+      output: (payment.toFixed(2))
+    });
+    console.log(typeof this.state.output);
     if (isNaN(payment)) {
-        console.log('payment is not a number');
-      } else {
-        console.log('Payment calculated');
-      };
-      return (payment.toFixed(2));
-    }
-  
-    render() {
+      console.log('payment is not a number');
+    } else {
+      console.log('Payment calculated');
+    };
+    return (payment.toFixed(2));
+  }
+
+  render() {
     return (
       <div className='container'>
 
         <h3>Mortgage Calculator</h3>
-        
+
         <form className="form-horizontal">
           <div className="form-group">
-            <label 
-            className="col-sm-2 control-label"
-            > 
-              Enter Your Loan Amount: 
+            <label
+              className="col-sm-2 control-label"
+            >
+              Enter Your Loan Amount:
             </label>
-            <input 
+            <input
               className="form-control"
               name='balance'
               type='number'
-              value={this.state.balance}
               onChange={(event) => this.handleBalance(event)}
             />
           </div>
 
           <div
-          className="form-group"
+            className="form-group"
           >
             <label
-            className="col-sm-2 control-label"
-            > 
-              Enter Your Annual Percentage Rate: 
+              className="col-sm-2 control-label"
+            >
+              Enter Your Annual Percentage Rate:
             </label>
             <input
               className="form-control"
               name='rate'
               type='number'
               step='0.01'
-              value={this.state.rate}
               onChange={(event) => this.handleRate(event)}
             />
           </div>
@@ -100,20 +98,19 @@ export default class App extends React.Component {
             <label
               className="col-sm-2 control-label"
             >
-              Select Your Loan Term: 
+              Select Your Loan Term:
             </label>
             <select
               className="form-control"
               name='term'
               type='number'
-              value={this.state.term}
               onChange={(event) => this.handleTerm(event)}
             >
-                <option value='15'>
-                  15
+              <option value='15'>
+                15
                 </option >
-                <option value='30'>
-                  30
+              <option value='30'>
+                30
                 </option>
             </select>
           </div>
@@ -124,7 +121,7 @@ export default class App extends React.Component {
             <button
               name='submit'
               onClick={(event) => this.handleClick(event)}
-              type="button" 
+              type="button"
               className="btn btn-success"
             > Calculate! </button>
           </div>
